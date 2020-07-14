@@ -6,8 +6,9 @@
 /* global document, Office */
 
 Office.onReady(info => {
+  document.getElementById("logger").innerHTML = "office ready\r";
   $(document).ready(function () {
-    document.getElementById("logger").innerHTML = "ready\r";
+    document.getElementById("logger").innerHTML = "document ready\r";
     if (info.host === Office.HostType.Outlook) {
       document.getElementById("logger").innerHTML += "outlook\r";
       document.getElementById("run").onclick = run;
