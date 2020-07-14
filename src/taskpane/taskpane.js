@@ -28,6 +28,7 @@ function run() {
 function loadProps() {
   document.getElementById("logger").innerHTML += "load props\r";
   var item = Office.context.mailbox.item;
+  document.getElementById("logger").innerHTML += JSON.stringify(item) + "\r";
   item.body.getAsync("text", { asyncContext: "callback" }, function (data) {
     gItem = {
       start: item.start,
