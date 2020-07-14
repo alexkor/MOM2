@@ -38,7 +38,7 @@ function loadEditProps() {
     var def = $.Deferred();
     item[prop].getAsync(function (asyncResult) {
       if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-        gItem[prop] = data.value;
+        gItem[prop] = asyncResult.value;
         document.getElementById("logger").innerHTML += prop + ": " + gItem[prop];
       } else {
         document.getElementById("logger").innerHTML += asyncResult.error;
