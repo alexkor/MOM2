@@ -111,3 +111,28 @@ function getItemUrl(id) {
     document.getElementById("logger").innerHTML += JSON.stringify(ctx) + "\r";
   });
 }
+
+// Форматировать объект EmailAddressDetails как
+// Имя Фамилия <emailaddress>
+function buildEmailAddressString(address) {
+  return "<a href='" + address.emailAddress + "'>" + address.displayName + "</a>";
+}
+
+// Взять массив объектов AttachmentDetails и
+// создать список форматированных строк, разделенных разрывом строки
+function buildEmailAddressesString(addresses) {
+  if (addresses && addresses.length > 0) {
+    var returnString = "";
+
+    for (var i = 0; i < addresses.length; i++) {
+      if (i > 0) {
+        returnString = returnString + "<br />";
+      }
+      returnString = returnString + buildEmailAddressString(addresses[i]);
+    }
+
+    return returnString;
+  }
+
+  return "None";
+}
