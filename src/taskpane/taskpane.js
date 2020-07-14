@@ -76,7 +76,7 @@ function loadReadProps() {
 function renderForm(item) {
   $('#start').val(item.start.format('yyyy-MM-dd'));
   $('#end').text(item.end);
-  $('#organizer').html(item.organizer);
+  $('#organizer').html(item.organizer.displayName);
   $('#location').html(item.location);
   $('#normalizedSubject').text(item.subject);
   $('#optionalAttendees').html(buildEmailAddressesString(item.optionalAttendees));
