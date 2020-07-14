@@ -4,8 +4,10 @@
  */
 
 /* global document, Office */
-document.getElementById("logger").innerHTML = "script loaded\r";
-Office.onReady(info => {
+$(document).ready(function () {
+  document.getElementById("logger").innerHTML = "script loaded\r";
+});
+Office.onReady(function (info) {
   document.getElementById("logger").innerHTML = "office ready\r";
   $(document).ready(function () {
     document.getElementById("logger").innerHTML = "document ready\r";
