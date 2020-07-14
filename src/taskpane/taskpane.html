@@ -24,8 +24,45 @@
 </head>
 
 <body class="ms-font-m ms-welcome ms-Fabric">
-    <div role="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
-        <span class="ms-Button-label">Run</span>
+    <div id="content-main" class="ms-Grid" dir="ltr">
+        <div id="message-props" class="ms-Grid-row hidden">
+            <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg12">
+                <div class="ms-Grid" dir="ltr">
+                    <div class="ms-Grid-row form">
+                        <button id="submit" class="ms-Button ms-Button--primary ms-sm12">
+                            <span class="ms-Button-label">Создать MOM</span>
+                        </button>
+                    </div>
+                    <div class="ms-Grid-row">
+                        <div class="ms-fontWeight-semibold ms-sm12">Тема</div>
+                        <textarea disabled id="normalizedSubject" class="ms-fontWeight-semibold ms-sm12"></textarea>
+                    </div>
+                    <div class="ms-Grid-row">
+                        <div class="ms-fontWeight-semibold ms-sm12">Место встречи</div>
+                        <textarea disabled id="location" class="ms-fontWeight-semibold ms-sm12"></textarea>
+                    </div>
+                    <div class="ms-Grid-row">
+                        <div class="ms-fontWeight-semibold ms-sm12">Дата начала</div>
+                        <input disabled id="start" type="date" />
+                    </div>
+                    <div class="ms-Grid-row">
+                        <div class="ms-fontWeight-semibold ms-sm12">Обязательные участники</div>
+                        <div disabled contenteditable="true" id="requiredAttendees"
+                            class="ms-fontWeight-semibold ms-sm12"></div>
+                    </div>
+                    <div class="ms-Grid-row">
+                        <div class="ms-fontWeight-semibold ms-sm12">Не обязательные участники</div>
+                        <div disabled contenteditable="true" id="optionalAttendees"
+                            class="ms-fontWeight-semibold ms-sm12"></div>
+                    </div>
+                    <div class="ms-Grid-row">
+                        <div class="ms-fontWeight-semibold ms-sm12">Описание</div>
+                        <textarea disabled id="body" class="ms-fontWeight-semibold ms-sm12"
+                            style="min-height:250px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="logger"></div>
 </body>

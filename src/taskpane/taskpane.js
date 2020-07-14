@@ -4,6 +4,7 @@
  */
 
 /* global document, Office */
+var gItem;
 $(document).ready(function () {
   document.getElementById("logger").innerHTML = "script loaded\r";
 });
@@ -13,25 +14,46 @@ Office.onReady(function (info) {
     document.getElementById("logger").innerHTML = "document ready\r";
     if (info.host === Office.HostType.Outlook) {
       document.getElementById("logger").innerHTML += "outlook\r";
-      document.getElementById("run").onclick = run;
+      document.getElementById("submit").onclick = run;
+      loadProps();
     }
   });
 });
 
 function run() {
   document.getElementById("logger").innerHTML += "run\r";
-  loadProps();
+  fillData(gItem);
 }
 
 function loadProps() {
   document.getElementById("logger").innerHTML += "load props\r";
   var item = Office.context.mailbox.item;
   item.body.getAsync("text", { asyncContext: "callback" }, function (data) {
-    fillData(item, data.value);
+    gItem = {
+      start: item.start,
+      end: item.end,
+      location: item.location,
+      subject: item.subject,
+      optionalAttendees: item.optionalAttendees,
+      requiredAttendees: item.requiredAttendees,
+      body: data.value,
+      organizer: item.organizer
+    };
+    renderForm(gItem);
   });
 }
 
-function fillData(item, body) {
+function renderForm(item) {
+  $('#start').val(item.start.format('yyyy-MM-dd'));
+  $('#end').text(item.end);
+  $('#location').html(item.location);
+  $('#normalizedSubject').text(item.subject);
+  $('#optionalAttendees').html(buildEmailAddressesString(item.optionalAttendees));
+  $('#requiredAttendees').html(buildEmailAddressesString(item.requiredAttendees));
+  $('#body').html(item.body);
+}
+
+function fillData(item) {
   document.getElementById("logger").innerHTML += "fill\r";
   var message = 'pageId=53811457&f=meetingCollector&title01=' + item.subject +
     '&beginTm=' + item.start.format('dd.MM.yyyy HH:mm') +
@@ -39,7 +61,7 @@ function fillData(item, body) {
     '&obligMember=' + item.requiredAttendees.map(function (address) { return address.emailAddress; }) +
     '&optionalMember=' + item.optionalAttendees.map(function (address) { return address.emailAddress; }) +
     '&place=' + item.location +
-    '&agenda=' + body +
+    '&agenda=' + item.body +
     '&type=OutlookConfluence' +
     '&authorMeeting=' + item.organizer.emailAddress;
 
