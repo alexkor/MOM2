@@ -12,6 +12,8 @@
   <AppDomains>
     <AppDomain>alexkor.github.io</AppDomain>
     <AppDomain>confluence.beeline.kz</AppDomain>
+    <AppDomain>localhost</AppDomain>
+    <AppDomain>owa.beeline.kz</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
