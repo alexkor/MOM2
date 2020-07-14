@@ -4,7 +4,7 @@
  */
 
 /* global document, Office */
-var gItem;
+var gItem = {};
 $(document).ready(function () {
   document.getElementById("logger").innerHTML += "script loaded\r";
 });
@@ -33,10 +33,10 @@ function run() {
 function loadEditProps() {
   document.getElementById("logger").innerHTML += "load edit props\r";
   var item = Office.context.mailbox.item;
-  var props = [item.start, item.end, item.location, item.subject, item.optionalAttendees, item.requiredAttendees, item.body, item.organizer];
+  var props = ["start", "end", "location", "subject", "optionalAttendees", "requiredAttendees", "body", "organizer"];
   $.when.apply($, $.map(props, function (prop) {
     var def = $.Deferred();
-    prop.getAsync(function (data) {
+    item[prop].getAsync(function (data) {
       gItem[prop] = data.value;
       document.getElementById("logger").innerHTML += gItem[prop];
       def.resolve();
