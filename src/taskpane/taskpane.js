@@ -33,7 +33,7 @@ function run() {
 function loadEditProps() {
   document.getElementById("logger").innerHTML += "load edit props\r";
   var item = Office.context.mailbox.item;
-  var props = ["start", "end", "location", "subject", "optionalAttendees", "requiredAttendees", "organizer"];
+  var props = ["start", "end", "location", "subject", "optionalAttendees", "requiredAttendees"];
   $.when.apply($, $.map(props, function (prop) {
     var def = $.Deferred();
     item[prop].getAsync(function (asyncResult) {
@@ -49,6 +49,7 @@ function loadEditProps() {
   })).then(function () {
     item.body.getAsync("text", { asyncContext: "callback" }, function (data) {
       gItem["body"] = data.value;
+      gItem["organizer"] = Office.context.mailbox.userProfile;
       renderForm(gItem);
     });
   });
