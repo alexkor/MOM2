@@ -10,7 +10,8 @@
   <HighResolutionIconUrl DefaultValue="https://alexkor.github.io/MOM2/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
-    <AppDomain>contoso.com</AppDomain>
+    <AppDomain>alexkor.github.io</AppDomain>
+    <AppDomain>confluence.beeline.kz</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
@@ -91,7 +92,7 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://alexkor.github.io/MOM2/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://alexkor.github.io/MOM2/src/taskpane/commands/commands.html"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://alexkor.github.io/MOM2/src/commands/commands.html"/>
         <bt:Url id="Taskpane.Url" DefaultValue="https://alexkor.github.io/MOM2/src/taskpane/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
