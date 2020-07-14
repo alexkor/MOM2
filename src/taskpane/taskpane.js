@@ -36,9 +36,13 @@ function loadEditProps() {
   var props = ["start", "end", "location", "subject", "optionalAttendees", "requiredAttendees", "organizer"];
   $.when.apply($, $.map(props, function (prop) {
     var def = $.Deferred();
-    item[prop].getAsync(function (data) {
-      gItem[prop] = data.value;
-      document.getElementById("logger").innerHTML += gItem[prop];
+    item[prop].getAsync(function (asyncResult) {
+      if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+        gItem[prop] = data.value;
+        document.getElementById("logger").innerHTML += prop + ": " + gItem[prop];
+      } else {
+        document.getElementById("logger").innerHTML += asyncResult.error;
+      }
       def.resolve();
     });
     return def.promise();
@@ -72,6 +76,7 @@ function loadReadProps() {
 function renderForm(item) {
   $('#start').val(item.start.format('yyyy-MM-dd'));
   $('#end').text(item.end);
+  $('#organizer').html(item.organizer);
   $('#location').html(item.location);
   $('#normalizedSubject').text(item.subject);
   $('#optionalAttendees').html(buildEmailAddressesString(item.optionalAttendees));
