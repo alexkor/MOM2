@@ -5,13 +5,18 @@
 
 /* global document, Office */
 
-Office.onReady(info => {
+// Office.onReady(info => {
+//   document.getElementById("logger").innerHTML = "ready\r";
+//   if (info.host === Office.HostType.Outlook) {
+//     document.getElementById("logger").innerHTML += "outlook\r";
+//     document.getElementById("run").onclick = run;
+//   }
+// });
+Office.initialize = function () {
   document.getElementById("logger").innerHTML = "ready\r";
-  if (info.host === Office.HostType.Outlook) {
-    document.getElementById("logger").innerHTML += "outlook\r";
-    document.getElementById("run").onclick = run;
-  }
-});
+  document.getElementById("logger").innerHTML += "outlook\r";
+  document.getElementById("run").onclick = run;
+}
 
 export async function run() {
   document.getElementById("logger").innerHTML += "run\r";
