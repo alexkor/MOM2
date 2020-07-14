@@ -15,7 +15,12 @@ Office.onReady(function (info) {
     if (info.host === Office.HostType.Outlook) {
       document.getElementById("logger").innerHTML += "outlook\r";
       document.getElementById("submit").onclick = run;
-      loadProps();
+      if (Office.context.mailbox.GetIsRead()) {
+        loadReadProps();
+      }
+      else {
+        loadEditProps();
+      }
     }
   });
 });
@@ -25,8 +30,35 @@ function run() {
   fillData(gItem);
 }
 
-function loadProps() {
-  document.getElementById("logger").innerHTML += "load props\r";
+function loadEditProps() {
+  document.getElementById("logger").innerHTML += "load edit props\r";
+  var item = Office.context.mailbox.item;
+  var props = [item.start, item.end, item.location, item.subject, item.optionalAttendees, item.requiredAttendees, item.body, item.organizer];
+  $.when.apply($, $.map(props, function (prop) {
+    var def = $.Deferred();
+    prop.getAsync(function (data) {
+      gItem[prop] = data.value;
+      document.getElementById("logger").innerHTML += gItem[prop];
+      def.resolve();
+    });
+    return def.promise();
+  })).then(function () {
+    // gItem = {
+    //   start: item.start,
+    //   end: item.end,
+    //   location: item.location,
+    //   subject: item.subject,
+    //   optionalAttendees: item.optionalAttendees,
+    //   requiredAttendees: item.requiredAttendees,
+    //   body: data.value,
+    //   organizer: item.organizer
+    // };
+    renderForm(gItem);
+  });
+}
+
+function loadReadProps() {
+  document.getElementById("logger").innerHTML += "load read props\r";
   var item = Office.context.mailbox.item;
   document.getElementById("logger").innerHTML += JSON.stringify(item) + "\r";
   item.body.getAsync("text", { asyncContext: "callback" }, function (data) {
