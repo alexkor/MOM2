@@ -9,7 +9,7 @@ $(document).ready(function () {
   document.getElementById("logger").innerHTML = "script loaded\r";
 });
 Office.onReady(function (info) {
-  document.getElementById("logger").innerHTML = "office ready\r";
+  document.getElementById("logger").innerHTML = "office ready: " + JSON.stringify(info) + "\r";
   $(document).ready(function () {
     document.getElementById("logger").innerHTML = "document ready\r";
     if (info.host === Office.HostType.Outlook) {
