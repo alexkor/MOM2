@@ -15,7 +15,7 @@ Office.onReady(info => {
   });
 });
 
-export async function run() {
+function run() {
   document.getElementById("logger").innerHTML += "run\r";
   loadProps();
 }
