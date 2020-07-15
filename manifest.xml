@@ -4,8 +4,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Beeline</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="My Office Add-in" />
-  <Description DefaultValue="A template to get started." />
+  <DisplayName DefaultValue="MOM Outlook" />
+  <Description DefaultValue="Панель для создания записей MOM в confluence." />
   <IconUrl DefaultValue="https://alexkor.github.io/MOM2/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="https://alexkor.github.io/MOM2/assets/icon-80.png" />
   <SupportUrl DefaultValue="https://office.beeline.kz" />
