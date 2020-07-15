@@ -2,13 +2,13 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
   <Id>05d37277-43be-4a05-b815-e36e86d94b54</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Contoso</ProviderName>
+  <ProviderName>Beeline</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="My Office Add-in" />
   <Description DefaultValue="A template to get started." />
   <IconUrl DefaultValue="https://alexkor.github.io/MOM2/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="https://alexkor.github.io/MOM2/assets/icon-80.png" />
-  <SupportUrl DefaultValue="https://www.contoso.com/help" />
+  <SupportUrl DefaultValue="https://office.beeline.kz" />
   <AppDomains>
     <AppDomain>alexkor.github.io</AppDomain>
     <AppDomain>confluence.beeline.kz</AppDomain>
@@ -46,7 +46,6 @@
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
-          <FunctionFile resid="Commands.Url" />
           <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
@@ -101,17 +100,14 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://alexkor.github.io/MOM2/assets/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://alexkor.github.io/MOM2/src/commands/commands.html" />
         <bt:Url id="Taskpane.Url" DefaultValue="https://alexkor.github.io/MOM2/src/taskpane/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GroupLabel" DefaultValue="Contoso Add-in" />
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane" />
-        <bt:String id="ActionButton.Label" DefaultValue="Perform an action" />
+        <bt:String id="GroupLabel" DefaultValue="Beeline Add-in" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="MOM" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane displaying all available properties." />
-        <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked." />
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane to create MOM." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
