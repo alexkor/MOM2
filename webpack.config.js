@@ -52,6 +52,12 @@ module.exports = async (env, options) => {
           from: "./src/taskpane/taskpane.css"
         }
       ]),
+      new CopyWebpackPlugin([
+        {
+          to: "jquery-3.4.1.min.js",
+          from: "./src/jquery-3.4.1.min.js"
+        }
+      ]),
     ],
     devServer: {
       headers: {
