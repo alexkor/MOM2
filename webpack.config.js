@@ -55,7 +55,7 @@ module.exports = async (env, options) => {
       new CopyWebpackPlugin([
         {
           to: "jquery-3.4.1.min.js",
-          from: "./src/jquery-3.4.1.min.js"
+          from: "./src/taskpane/jquery-3.4.1.min.js"
         }
       ]),
     ],
