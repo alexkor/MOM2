@@ -14,8 +14,9 @@ Office.onReady(function (info) {
     document.getElementById("logger").innerHTML += "document ready\r";
     if (info.host === Office.HostType.Outlook) {
       document.getElementById("logger").innerHTML += "outlook\r";
+      document.getElementById("logger").innerHTML += "//" + (new Date(Office.context.mailbox.item.start) == "Invalid Date") + "//" + "\r";
       document.getElementById("submit").onclick = run;
-      if (Office.context.mailbox.GetIsRead()) {
+      if (new Date(Office.context.mailbox.item.start) != "Invalid Date") {
         loadReadProps();
       }
       else {
